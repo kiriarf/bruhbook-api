@@ -18,12 +18,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  def showcurrent
-    render json: {
-      user: @current_user
-    }
-  end
-
   def logged_in
     if @current_user
       render json: {
