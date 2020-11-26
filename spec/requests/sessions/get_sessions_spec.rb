@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe SessionsController
 
-describe "POST sessions#create" do
+describe "GET sessions#logged_in, DELETE sessions#logout" do
 
     before do
       post '/signup', params: { "user": {

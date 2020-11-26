@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe StaticController
 
-describe "POST sessions#create" do
+describe "GET static#home" do
 
     before do
       get '/'
