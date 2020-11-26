@@ -11,18 +11,33 @@ describe "POST sessions#create" do
         "password_confirmation": "asdfg"
         }
       }
+    end
+
+    it 'returns status is created' do
       post '/login', params: { "user": {
         "email": "test@makers.uk",
         "password": "asdfg"
         }
       }
-    end
-
-    it 'returns status is created' do
       expect(JSON.parse(response.body)['status']).to eq('created')
     end
 
     it 'returns logged in is true' do
+      post '/login', params: { "user": {
+        "email": "test@makers.uk",
+        "password": "asdfg"
+        }
+      }
       expect(JSON.parse(response.body)['logged_in']).to eq(true)
     end
+
+    it 'returns 401 if no session' do
+      post '/login', params: { "user": {
+        "email": "wrongemail@makers.uk",
+        "password": "asdfgh"
+        }
+      }
+      expect(JSON.parse(response.body)['status']).to eq(401)
+    end
+
 end
