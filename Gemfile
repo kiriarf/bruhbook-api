@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'rack-cors', require: 'rack/cors' 
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'travis'
 # Use Active Storage variant
@@ -35,6 +35,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'simplecov', '~> 0.19.1'
+  gem 'simplecov-console', '~> 0.8.0'
 end
 
 group :development do
