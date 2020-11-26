@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.7.0
+services:
+  - postgresql
+script:
+  - bundle install
+  - nvm install node
+  - npm i -g yarn
+  - yarn
+  - bundle exec rails db:create
+  - bundle exec rails db:migrate
+  - bundle exec rails db:seed
+  - bundle exec rails webpacker:compile
+  - bundle exec rspec
