@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  include CurrentUserConcern
   before_action :find_post
 
   def create
