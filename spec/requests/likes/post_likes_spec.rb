@@ -20,7 +20,4 @@ describe 'POST likes #create' do
   it 'returs status created' do
     expect(JSON.parse(response.body)['status']).to eq('created')
   end
-
-
-
 end
