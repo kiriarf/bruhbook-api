@@ -1,49 +1,63 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :update, :destroy]
 
   def index
     @posts = Post.all
     render json: {
       posts: @posts
-      }
+    }
   end
 
   def show
-    @post = Post.find(params['id'])
-
-      render json:  {
-        post: @post
-      }
+    render json:  {
+      post: @post
+    }
   end
 
   def create
-    @post = Post.create(
-      text_content: params['text_content'],
-      user_id: params['user_id']
+    post = Post.new(
+      text_content: params['post']['text_content'],
+      user_id: params['post']['user_id']
     )
-    render json:  {
-      post: @post
-    }
+
+    if post.save
+      render json: {
+        status: :created,
+        post: post
+      }
+    else
+      render json: { 
+        errors: post.errors, 
+        status: :unprocessable_entity 
+      }
+    end 
   end
 
   def update
-    @post = Post.find(params['id'])
-    @post.update(
-      text_content: params['text_content'],
-      user_id: params['user_id']
-    )
-    render json:  {
-      post: @post
-    }
+    if @post.update(
+        text_content: params['post']['text_content'],
+      )
+      render json: {
+        status: :ok,
+        post: @post
+      }
+    else
+      render json: { 
+        errors: @post.errors, 
+        status: :unprocessable_entity 
+      }
+    end 
   end
 
-  def destroy
-    @posts = Post.all
-    @post = Post.find(params['id'])
+  def destroy  
     @post.destroy
     render json:  {
-      post: @posts
+      status: :deleted
     }
   end
 
-
+  private
+  def set_post
+    @post = Post.find(params[:id])
+  end
 end
