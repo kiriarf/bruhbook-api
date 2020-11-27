@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    user = User.find(params['post']['user_id'])
     post = Post.new(
       text_content: params['post']['text_content'],
       user_id: params['post']['user_id']
@@ -23,7 +24,8 @@ class PostsController < ApplicationController
     if post.save
       render json: {
         status: :created,
-        post: post
+        post: post,
+        name: user.name
       }
     else
       render json: { 
