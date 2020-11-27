@@ -3,8 +3,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    posts_and_users = []
+
+    @posts.each do |post|
+      user = User.find(post.user_id)
+      posts_and_users << {post: post, name: user.name}
+    end
+
     render json: {
-      posts: @posts
+      posts: posts_and_users
     }
   end
 
