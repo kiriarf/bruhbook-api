@@ -1,24 +1,5 @@
-# README
+# Bruhbook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## About
+Bruhbook is a CRUD app that allows users to create posts and share them with others on a timeline.
+The app consists of a backend API built in Rails and a React frontend, which you can find [here](https://github.com/jotkafomat/bruh-in-react).
